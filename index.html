@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="CSS/normalize.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/adapitiive.css">
+
+    <title>b in Site</title>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const radioButtons = document.querySelectorAll('input[name="slider"]');
+            const slides = document.querySelectorAll('.slide');
+            const labels = document.querySelectorAll('.slider__control');
+            const slideIds = ['layout', 'seo', 'design', 'admin'];
+            let currentSlide = 0;
+            let autoSlideInterval;
+
+            function showNextSlide() {
+                currentSlide = (currentSlide + 1) % slideIds.length;
+                document.getElementById(slideIds[currentSlide]).checked = true;
+            }
+
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(showNextSlide, 5000);
+            }
+
+            function resetAutoSlide() {
+                clearInterval(autoSlideInterval);
+                startAutoSlide();
+            }
+
+            // Инициализация автоматического переключения
+            startAutoSlide();
+
+            // Обработчики для ручного переключения
+            labels.forEach(label => {
+                label.addEventListener('click', function () {
+                    currentSlide = Array.from(labels).indexOf(this);
+                    resetAutoSlide();
+                });
+            });
+
+            // Остановка при наведении мыши
+            const sliderContainer = document.querySelector('.hero__slider__container');
+            sliderContainer.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+            sliderContainer.addEventListener('mouseleave', startAutoSlide);
+        });
+    </script>
+
+
+</head>
+
+<header class="header">
+    <div class="container">
+        <div class="header__content flex">
+            <div class="header__logo">
+                <a href="#home"><img src="IMG/svg/logo_white.svg" alt=""></a>
+            </div>
+
+            <!-- Бургер-кнопка -->
+            <div class="burger">
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+            </div>
+
+            <ul class="header__nav__list nav-menu flex list--reset">
+                <li class="nav__item">
+                    <a href="#about">
+                        Be in site
+                    </a>
+                </li>
+
+                <li class="nav__item">
+                    <a href="#services">
+                        Услуги
+                    </a>
+                </li>
+
+                <li class="nav__item">
+                    <a href="#portfolio">
+                        Наши работы
+                    </a>
+                </li>
+
+                <li class="nav__item">
+                    <a href="#blog">
+                        Полезности
+                    </a>
+                </li>
+
+                <li class="nav__item">
+                    <a href="#contacts">
+                        Контакты
+                    </a>
+                </li>
+
+            </ul>
+            <!--
+            <div class="header__phone flex">
+                <a href="tel:+79633231571" class="header__phone-link">
+                    +7(963)3231571
+                </a>
+            </div>
+-->
+
+        </div>
+    </div>
+</header>
+
+
+<body>
+
+    <main>
+
+
+        <section class="hero" id="hero">
+            <div class="container">
+                <div class="hero__content flex">
+                    <h1 class="hero__title">
+                        <span><b>Be</b><br>In<span class="title-rotate">Site</span></span>
+                    </h1>
+                    <div class="hero__descr">
+                        Создаём продающие сайты
+                    </div>
+                    <a href="#url" class="hero__btn btn flex">
+                        Подробнее
+                    </a>
+
+
+                    <ul class="services__list list--reset flex">
+
+                        <li class="services__item flex">
+                            <img src="IMG/icons/dev.svg" alt="dev">
+                            <a href="" class="services__item__link">
+                                <h3 class="services__item__title">
+                                    Разработка
+                                </h3>
+                                <hr>
+
+                            </a>
+                            <p class="services__item__descr">
+                                Разработаем отличный сайт для Вашей компании, который станет эффективным
+                                инструментом увеличения продаж!
+                            </p>
+                        </li>
+
+                        <li class="services__item flex">
+                            <img src="IMG/icons/seo.svg" alt="seo" class="services__item__img">
+
+                            <a href="#" class="services__item__link">
+                                <h3 class="services__item__title">
+                                    Продвижение
+                                </h3>
+                                <hr>
+                            </a>
+                            <p class="services__item__descr">
+                                Комплексное продвижение проекта: SEO, SMM, контекстная реклама. Гарантии результата.
+                                Социальные сети.
+                            </p>
+                        </li>
+                        <li class="services__item flex">
+                            <img src="IMG/icons/dsgn.svg" alt="dsgn">
+
+                            <a href="" class="services__item__link">
+                                <h3 class="services__item__title">
+                                    Дизайн
+                                </h3>
+                                <hr>
+
+                            </a>
+                            <p class="services__item__descr">
+                                Разработаем индивидуальный дизайн сайта, лендинга, презентации.
+                                Гарантия 100%
+                                уникальности.
+                            </p>
+                        </li>
+                        <li class="services__item flex">
+                            <img src="IMG/icons/adm.svg" alt="adm">
+
+                            <a href="" class="services__item__link">
+                                <h3 class="services__item__title">
+                                    Поддержка
+                                </h3>
+                                <hr>
+
+                            </a>
+                            <p class="services__item__descr">
+                                Поддерживаем работоспособность Вашего сайта, защищаем от внешних атак
+                                и
+                                редактируем материалы!
+                            </p>
+                        </li>
+                    </ul>
+
+
+                </div>
+            </div>
+        </section>
+
+        <!-- services -->
+
+        <section class="services__section" id="services">
+            <div class="container">
+            </div>
+        </section>
+
+        <!-- about -->
+
+        <section class="about" id="about">
+
+            <div class="container">
+                <div class="about__content section__offset flex">
+                    <h2 class="about__title section__title">
+                        О компании
+                    </h2>
+                    <p class="about__descr">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur, recusandae totam atque
+                        obcaecati nulla dolorum nemo, repellendus enim earum sequi temporibus corporis voluptatem,
+                        corrupti blanditiis consequatur minus vero harum? Explicabo.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam laboriosam dolor enim
+                        perspiciatis in, ab cupiditate earum nobis? Sint reprehenderit natus dolorem quos commodi
+                        voluptatum eius, eaque similique sit vero?
+                    </p>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- advantages and stats-->
+
+        <section class="adv">
+            <div class="container">
+                <div class="adv__content section__offset">
+                    <h2 class="section__title adv__title">
+                        Почему мы?
+                    </h2>
+                    <!--
+                    <ul class="adv__list list--reset flex">
+                        <li class="adv__item flex">
+                            <div class="item__card">
+                                <h2 class="section__title adv__title">
+                                    Преимущества
+                                </h2>
+                            </div>
+                        </li>
+                        <li class="adv__item"></li>
+
+                        <li class="adv__item iconblock-4">
+                            <div class="item__card">
+                                <div class="icon">
+                                    <img src="IMG/icons/x-ray-icon (1).png" alt="sphere">
+                                </div>
+                                <h3 class="card__title">
+                                    Адаптивная верстка
+                                </h3>
+                                <p class="adv__item__descr services__item__descr">
+                                    "Резиновые" сайты для отображения на любых устройствах
+                                </p>
+                            </div>
+                        </li>
+                        <li class="adv__item"></li>
+                        <li class="adv__item iconblock-4">
+                            <div class="item__card">
+
+                                <div class="icon">
+                                    <img src="IMG/icons/x-ray-icon (1).png" alt="sphere">
+                                </div>
+                                <h3 class="card__title">
+                                    Современный движок
+                                </h3>
+                                <p class="adv__item__descr">
+                                    Надежная CMS для быстрой и устойчивой работы сайта
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="adv__item iconblock-4">
+                            <div class="item__card">
+
+                                <div class="icon">
+                                    <img src="IMG/icons/x-ray-icon (1).png" alt="sphere">
+                                </div>
+
+                                <h3 class="card__title">
+                                    Эффективный дизайн
+                                </h3>
+                                <p class="adv__item__descr">
+                                    Всегда продуман с точки зрения продаж
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="adv__item iconblock-4">
+                            <div class="item__card">
+
+                                <div class="icon">
+                                    <img src="IMG/icons/x-ray-icon (1).png" alt="sphere">
+                                </div>
+
+                                <h3 class="adv__item__title">
+                                    Индивидуальный подход
+                                </h3>
+                                <p class="adv__item__descr">
+                                    Каждый клиент для нас особенный
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="adv__item iconblock-4">
+                            <div class="item__card">
+
+                                <div class="icon">
+                                    <img src="IMG/icons/x-ray-icon (1).png" alt="sphere">
+                                </div>
+
+                                <h3 class=" card__title">
+                                    Разработка материалов
+                                </h3>
+                                <p class="adv__item__descr">
+                                    Обеспечиваем контентную поддержку сайта
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="adv__item iconblock-4">
+                            <div class="item__card flex">
+
+                                <div class="icon">
+                                    <img src="IMG/icons/x-ray-icon (1).png" alt="sphere">
+                                </div>
+
+                                <h3 class="adv__item__title card__title">
+                                    Уникальный функционал
+                                </h3>
+                                <p class="adv__item__descr">
+                                    Решаем задачи любого уровня сложности
+                                </p>
+                            </div>
+                        </li>
+
+                    </ul>
+-->
+                    <div class="accordion">
+                        <input type="radio" name="select" class="accordion-select" checked />
+                        <div class="accordion-title"><span>Адаптивная верстка
+                            </span></div>
+                        <div class="accordion-content">"Резиновые" сайты для отображения на любых устройствах
+                        </div>
+                        <input type="radio" name="select" class="accordion-select" />
+                        <div class="accordion-title"><span>Title</span></div>
+                        <div class="accordion-content">Content</div>
+                        <input type="radio" name="select" class="accordion-select" />
+                        <div class="accordion-title"><span>Title</span></div>
+                        <div class="accordion-content">Content</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- price -->
+
+        <section class="price" id="price">
+
+            <div class="container">
+                <div class="price__content section__offset">
+                    <h2 class="price__title section__title">
+                        Цены
+                    </h2>
+
+                    <ul class="price__list list--reset flex">
+                        <li class="price__item">
+                            <div class="price__item__container">
+                                <h3 class="price__item__title card__title">
+                                    Разработка
+                                </h3>
+                                <ul class="price__descr__list list--reset">
+                                    <li class="price__descr__item">Новейшее ПО</li>
+                                    <li class="price__descr__item">Современные технологии</li>
+                                    <li class="price__descr__item">Продуманное usability</li>
+                                    <li class="price__descr__item">Индивидуальный подход</li>
+                                </ul>
+                                <p class="price__item__cost">
+                                    От 50000₽
+                                </p>
+                            </div>
+                            <a href="" class="price__item__btn flex">
+                                Подробнее
+                            </a>
+                        </li>
+                        <li class="price__item">
+                            <div class="price__item__container">
+                                <h3 class="price__item__title card__title">
+                                    Продвижение
+                                </h3>
+                                <ul class="price__descr__list list--reset">
+                                    <li class="price__descr__item">Нацеленность на результат</li>
+                                    <li class="price__descr__item">Квалифицированные&nbsp;специалисты</li>
+                                    <li class="price__descr__item">Проверенные методы</li>
+                                    <li class="price__descr__item">Гарантии</li>
+                                </ul>
+                                <p class="price__item__cost">
+                                    От 25000₽
+                                </p>
+                            </div>
+                            <a href="" class="price__item__btn  flex">
+                                Подробнее
+                            </a>
+                        </li>
+                        <li class="price__item">
+                            <div class="price__item__container">
+                                <h3 class="price__item__title card__title">
+                                    Дизайн
+                                </h3>
+                                <ul class="price__descr__list list--reset">
+                                    <li class="price__descr__item">Креативные идеи</li>
+                                    <li class="price__descr__item">Свежие решения</li>
+                                    <li class="price__descr__item">Только уникальная разработка</li>
+                                    <li class="price__descr__item">Учет всех пожеланий</li>
+                                </ul>
+                                <p class="price__item__cost">
+                                    От 40000₽
+                                </p>
+                            </div>
+                            <a href="" class="price__item__btn  flex">
+                                Подробнее
+                            </a>
+                        </li>
+                        <li class="price__item">
+                            <div class="price__item__container">
+                                <h3 class="price__item__title card__title">
+                                    Поддержка
+                                </h3>
+                                <ul class="price__descr__list list--reset">
+                                    <li class="price__descr__item">Связь 24/7</li>
+                                    <li class="price__descr__item">Личный менеджер</li>
+                                    <li class="price__descr__item">Оформление договора</li>
+                                    <li class="price__descr__item">Прозрачная отчетность</li>
+                                </ul>
+                                <p class="price__item__cost">
+                                    От 15000₽
+                                </p>
+                            </div>
+                            <a href="" class="price__item__btn  flex">
+                                Подробнее
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- portfolio -->
+
+        <section class="portfolio">
+            <div class="container">
+                <div class="portfolio__content section__offset">
+
+                </div>
+            </div>
+        </section>
+
+        <!-- form -->
+
+        <section class="form">
+            <div class="container">
+                <div class="form__content section__offset">
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="footer">
+        <div class="container">
+            <div class="footer__content">
+                <!-- Footer content goes here -->
+            </div>
+        </div>
+    </footer>
+    <!--бургер-->
+    <script>
+        const burger = document.querySelector('.burger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        // Открытие/закрытие меню
+        burger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            burger.classList.toggle('active');
+            burger.styles('background:none');
+        });
+
+        // Закрытие меню при клике вне области
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-menu') && !e.target.closest('.burger')) {
+                navMenu.classList.remove('active');
+                burger.classList.remove('active');
+            }
+        });
+
+        // Закрытие меню при клике на пункт (для якорных ссылок)
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                burger.classList.remove('active');
+            });
+        });
+
+        // Закрытие меню при изменении размера окна
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navMenu.classList.remove('active');
+                burger.classList.remove('active');
+            }
+        });
+    </script>
+
+</body>
+
+</html>
